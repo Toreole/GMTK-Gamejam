@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     protected string xRotAxis, yRotAxis;
     [SerializeField]
+    protected float minXRot, maxXRot;
+    [SerializeField]
     protected new Transform camera;
     [SerializeField]
     protected NavMeshAgent agent;
@@ -23,15 +25,20 @@ public class PlayerMovement : MonoBehaviour
     protected ResetCameraVR camReset;
 
     protected bool isXR = false;
+    
+    protected float currentXRot = 0f;
+
+    //Input
+    float movX, movZ;
+    float xRotIn, yRotIn;
 
     //disable XR related stuff when this isnt XR
     void Awake()
     {
         isXR = XRDevice.isPresent;
-
         if (isXR)
         {
-
+            print(XRDevice.model);
         }
         else
         {
@@ -43,14 +50,35 @@ public class PlayerMovement : MonoBehaviour
     //fetch input
     void Update()
     {
-        print(Input.GetAxis("Horizontal"));
+        var deltaTime = Time.deltaTime;
+        GetInput();
         if(isXR)
         {
 
         }
-        else
+        else //keyb and mouse
         {
+            //rotation up and down, camera
+            var rotation = rotationSpeed * deltaTime;
+            var xRot = -xRotIn * rotation;
+            var deltaXRot = Mathf.Clamp(xRot, minXRot - currentXRot, maxXRot - currentXRot);
+            currentXRot += deltaXRot;
+            camera.Rotate(deltaXRot, 0, 0);
+            //rotation left to right
+            transform.Rotate(0, yRotIn * rotation, 0);
 
+            var movement = (movX * transform.right + movZ * transform.forward).normalized * deltaTime * walkSpeed;
+            agent.Move(movement);
         }
+    }
+
+    void GetInput()
+    {
+        movX = Input.GetAxis(xMovAxis);
+        movZ = Input.GetAxis(zMovAxis);
+
+        //Only for mouse input, no rotation with XR
+        xRotIn = Input.GetAxis(xRotAxis);
+        yRotIn = Input.GetAxis(yRotAxis);
     }
 }

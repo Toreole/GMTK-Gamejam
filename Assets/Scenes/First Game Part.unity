@@ -143,14 +143,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6314e2de61dba6947b045b0badf9f1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xMovAxis: 
-  zMovAxis: 
-  xRotAxis: 
-  yRotAxis: 
+  xMovAxis: Horizontal
+  zMovAxis: Vertical
+  xRotAxis: Mouse Y
+  yRotAxis: Mouse X
+  minXRot: -70
+  maxXRot: 70
   camera: {fileID: 534669905}
   agent: {fileID: 364685398}
-  walkSpeed: 0
-  rotationSpeed: 0
+  walkSpeed: 2
+  rotationSpeed: 20
   handPos: {fileID: 534669907}
   camReset: {fileID: 534669906}
 --- !u!4 &364685397
@@ -276,7 +278,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 426a0adc804feff4b8888e2bee11d9f9, type: 2}
+  - {fileID: 2100000, guid: 4d1c8fefbd44c304d96e75ef8c0499bf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
