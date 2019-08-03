@@ -55,13 +55,15 @@ public class PlayerMovement : MonoBehaviour
         if(isXR)
         {
             //try to get the normalized forward
-            var forward = camera.forward;
+            var forward = camera.forward * movZ;
             forward.y = 0;
-            forward.Normalize();
+            if (forward.sqrMagnitude > Mathf.Epsilon)
+                forward.Normalize();
             //try to get the normalized right
-            var right = camera.right;
+            var right = camera.right * movX;
             right.y = 0;
-            right.Normalize();
+            if(right.sqrMagnitude> Mathf.Epsilon)
+                right.Normalize();
 
             var movement = forward + right;
             movement.Normalize();
