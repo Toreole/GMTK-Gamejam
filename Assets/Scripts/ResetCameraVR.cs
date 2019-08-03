@@ -6,7 +6,7 @@ using UnityEngine.XR;
 public class ResetCameraVR : MonoBehaviour
 {
 
-  void Start() {
+  void Awake() {
     InputTracking.Recenter();
   }
 }
