@@ -17,7 +17,7 @@ public class ButtonScript : MonoBehaviour
     {
         if (collision.collider.CompareTag(handTag))
         {
-            Activate(); 
+            Activate(true); 
             print("collided with hand");
         }
     }
@@ -28,9 +28,11 @@ public class ButtonScript : MonoBehaviour
         StartCoroutine(DelayUp()); 
     }
 
-    public void Activate()
+    public void Activate(bool playerIsXR)
     {
         animator.SetBool(clickBool, true);
+        if (!playerIsXR)
+            StartCoroutine(DelayUp());
     }
 
     IEnumerator DelayUp()
