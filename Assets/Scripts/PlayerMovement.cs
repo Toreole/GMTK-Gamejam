@@ -54,9 +54,23 @@ public class PlayerMovement : MonoBehaviour
         GetInput();
         if(isXR)
         {
+            //try to get the normalized forward
+            var forward = camera.forward;
+            forward.y = 0;
+            forward.Normalize();
+            //try to get the normalized right
+            var right = camera.right;
+            right.y = 0;
+            right.Normalize();
+
+            var movement = forward + right;
+            movement.Normalize();
+            movement *= walkSpeed * deltaTime;
+
+            agent.Move(movement);
 
         }
-        else //keyb and mouse
+        else //keyb and mouse 
         {
             //rotation up and down, camera
             var rotation = rotationSpeed * deltaTime;
