@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class ResetCameraVR : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        
+      print(Input.GetAxis("OC_ResetCam"));
+      //if (Input.GetAxis("OC_ResetCam")) {
+      //  print("Yeet");
+      //}
     }
 }
