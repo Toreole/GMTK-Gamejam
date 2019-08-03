@@ -6,6 +6,8 @@ using UnityEngine.XR;
 public class ResetCameraVR : MonoBehaviour
 {
 
+  public HandPos handPos;
+
   void Awake() {
     InputTracking.Recenter();
   }
@@ -20,6 +22,7 @@ public class ResetCameraVR : MonoBehaviour
     if (Input.GetAxis("OC_ResetCam") > 0)
     {
       InputTracking.Recenter();
+      handPos.UpdateHeight();
     }
     //if (Input.GetAxis("Vive_ResetCam") > 0)
     //{
