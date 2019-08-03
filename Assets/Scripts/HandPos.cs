@@ -21,10 +21,15 @@ public class HandPos : MonoBehaviour
     Hand_L.transform.rotation = InputTracking.GetLocalRotation(XRNode.LeftHand);
   }
 
-  public void Disable()
-  {
+  public void Disable() {
     Hand_R.gameObject.SetActive(false);
     Hand_L.gameObject.SetActive(false);
     this.enabled = false;
+  }
+
+  public void OnCollisionEnter(Collision col) {
+    if (col.collider.gameObject.tag == "Button") {
+      col.collider.gameObject.GetComponent<ButtonScript>().Activate();
+    }
   }
 }
