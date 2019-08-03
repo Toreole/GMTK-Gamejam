@@ -32,10 +32,4 @@ public class HandPos : MonoBehaviour
     Hand_L.gameObject.SetActive(false);
     this.enabled = false;
   }
-
-  public void OnCollisionEnter(Collision col) {
-    if (col.collider.gameObject.tag == "Button") {
-      col.collider.gameObject.GetComponent<ButtonScript>().Activate();
-    }
-  }
 }
