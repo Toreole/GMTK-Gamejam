@@ -15,12 +15,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     protected NavMeshAgent agent;
     [SerializeField]
-    protected float walkSpeed;
+    protected float walkSpeed, rotationSpeed;
+
+    [SerializeField]
+    protected HandPos handPos;
+    [SerializeField]
+    protected ResetCameraVR camReset;
 
     protected bool isXR = false;
 
-    //Destroy this if player is using XR, since this will conflict with it.
-    void Start()
+    //disable XR related stuff when this isnt XR
+    void Awake()
     {
         isXR = XRDevice.isPresent;
 
@@ -30,13 +35,15 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-
+            handPos.Disable();
+            camReset.enabled = false;
         }
     }
 
     //fetch input
     void Update()
     {
+        print(Input.GetAxis("Horizontal"));
         if(isXR)
         {
 

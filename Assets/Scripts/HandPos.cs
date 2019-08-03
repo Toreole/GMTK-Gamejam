@@ -20,4 +20,11 @@ public class HandPos : MonoBehaviour
     Hand_R.transform.rotation = InputTracking.GetLocalRotation(XRNode.RightHand);
     Hand_L.transform.rotation = InputTracking.GetLocalRotation(XRNode.LeftHand);
   }
+
+  public void Disable()
+  {
+    Hand_R.gameObject.SetActive(false);
+    Hand_L.gameObject.SetActive(false);
+    this.enabled = false;
+  }
 }
