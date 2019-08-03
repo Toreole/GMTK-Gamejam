@@ -17,7 +17,7 @@ public class ButtonScript : MonoBehaviour
     {
         if (collision.collider.CompareTag(handTag))
         {
-            Activate();
+            Activate(); 
             print("collided with hand");
         }
     }
