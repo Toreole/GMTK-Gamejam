@@ -9,15 +9,26 @@ public class ButtonScript : MonoBehaviour
     [SerializeField]
     protected Animator animator;
     [SerializeField]
-    protected string clickTrigger = "Click";
-
-
+    protected string clickBool = "Click";
+    
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag(handTag))
         {
-            animator.SetTrigger(clickTrigger);
+            animator.SetBool(clickBool, true);
             print("collided with hand");
         }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        StopAllCoroutines();
+        StartCoroutine(DelayUp()); 
+    }
+
+    IEnumerator DelayUp()
+    {
+        yield return new WaitForSeconds(1f);
+        animator.SetBool(clickBool, false);
     }
 }
