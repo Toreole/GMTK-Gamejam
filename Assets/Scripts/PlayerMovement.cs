@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     protected string xRotXRAxis;
     [SerializeField]
+    protected float rotationSpeedXR = 60f;
+    [SerializeField]
     protected float minXRot, maxXRot;
     [SerializeField]
     protected new Transform camera;
@@ -53,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         var deltaTime = Time.deltaTime;
-        var rotation = rotationSpeed * deltaTime;
+        var rotation = (isXR? rotationSpeedXR : rotationSpeed) * deltaTime;
 
         GetInput();
         if (isXR)
