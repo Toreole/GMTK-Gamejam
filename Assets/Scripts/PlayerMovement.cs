@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     protected HandPos handPos;
     [SerializeField]
     protected ResetCameraVR camReset;
+    [SerializeField]
+    protected GameObject playerInteract;
 
     protected bool isXR = false;
     
@@ -43,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
         if (isXR)
         {
             print(XRDevice.model);
+            playerInteract.SetActive(false);
         }
         else
         {
