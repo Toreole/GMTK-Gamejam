@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     protected string xRotAxis, yRotAxis;
     [SerializeField]
+    protected string xRotXRAxis;
+    [SerializeField]
     protected float minXRot, maxXRot;
     [SerializeField]
     protected new Transform camera;
@@ -51,8 +53,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         var deltaTime = Time.deltaTime;
+        var rotation = rotationSpeed * deltaTime;
+
         GetInput();
-        if(isXR)
+        if (isXR)
         {
             //try to get the normalized forward
             var forward = camera.forward * movZ;
@@ -75,17 +79,17 @@ public class PlayerMovement : MonoBehaviour
         else //keyb and mouse 
         {
             //rotation up and down, camera
-            var rotation = rotationSpeed * deltaTime;
             var xRot = -xRotIn * rotation;
             var deltaXRot = Mathf.Clamp(xRot, minXRot - currentXRot, maxXRot - currentXRot);
             currentXRot += deltaXRot;
             camera.Rotate(deltaXRot, 0, 0);
             //rotation left to right
-            transform.Rotate(0, yRotIn * rotation, 0);
 
             var movement = (movX * transform.right + movZ * transform.forward).normalized * deltaTime * walkSpeed;
             agent.Move(movement);
         }
+        //rotation for both
+        transform.Rotate(0, yRotIn * rotation, 0);
     }
 
     void GetInput()
@@ -93,8 +97,15 @@ public class PlayerMovement : MonoBehaviour
         movX = Input.GetAxis(xMovAxis);
         movZ = Input.GetAxis(zMovAxis);
 
-        //Only for mouse input, no rotation with XR
-        xRotIn = Input.GetAxis(xRotAxis);
-        yRotIn = Input.GetAxis(yRotAxis);
+        if (isXR)
+        {
+            yRotIn = Input.GetAxis(xRotXRAxis);
+        }
+        else
+        {
+            //Only for mouse input, no rotation with XR
+            xRotIn = Input.GetAxis(xRotAxis);
+            yRotIn = Input.GetAxis(yRotAxis);
+        }
     }
 }
