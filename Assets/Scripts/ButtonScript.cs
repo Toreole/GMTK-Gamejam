@@ -16,6 +16,8 @@ public class ButtonScript : MonoBehaviour
     protected new AudioSource audio;
     [SerializeField]
     protected AudioClip pressSound, releaseSound;
+    [SerializeField]
+    protected Activatable targetActivate;
     
     private void OnCollisionEnter(Collision collision)
     {
@@ -49,6 +51,7 @@ public class ButtonScript : MonoBehaviour
     {
         audio.clip = pressSound;
         audio.Play();
+        targetActivate.Activate(); 
     }
 
     public void ButtonReleased()
