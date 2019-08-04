@@ -30,6 +30,9 @@ public class ButtonScript : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
+        if (collision.collider.isTrigger)
+            return;
+        //print(collision.collider.name);
         StopAllCoroutines();
         StartCoroutine(DelayUp(stayTimeXR)); 
     }
@@ -43,6 +46,7 @@ public class ButtonScript : MonoBehaviour
 
     IEnumerator DelayUp(float delay)
     {
+        print("delay");
         yield return new WaitForSeconds(delay);
         animator.SetBool(clickBool, false);
     }

@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/First Game Part.unity
     guid: 0c8fee83731b32e4aa13d884535c3a3b
+  - enabled: 1
+    path: Assets/Scenes/Scene 02.unity
+    guid: dfab16a1a05e3d04e9a983754326f81c
+  - enabled: 1
+    path: Assets/Scenes/Scene 03.unity
+    guid: 72436d4089fa6404d97b63b66680a84c
   m_configObjects: {}
