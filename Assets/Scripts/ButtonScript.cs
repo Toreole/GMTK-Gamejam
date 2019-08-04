@@ -11,7 +11,11 @@ public class ButtonScript : MonoBehaviour
     [SerializeField]
     protected string clickBool = "Click";
     [SerializeField]
-    protected float stayTime = 0.2f;
+    protected float stayTime = 0.4f, stayTimeXR = 0.2f;
+    [SerializeField]
+    protected new AudioSource audio;
+    [SerializeField]
+    protected AudioClip pressSound, releaseSound;
     
     private void OnCollisionEnter(Collision collision)
     {
@@ -25,19 +29,31 @@ public class ButtonScript : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         StopAllCoroutines();
-        StartCoroutine(DelayUp()); 
+        StartCoroutine(DelayUp(stayTimeXR)); 
     }
 
     public void Activate(bool playerIsXR)
     {
         animator.SetBool(clickBool, true);
         if (!playerIsXR)
-            StartCoroutine(DelayUp());
+            StartCoroutine(DelayUp(stayTime));
     }
 
-    IEnumerator DelayUp()
+    IEnumerator DelayUp(float delay)
     {
-        yield return new WaitForSeconds(stayTime);
+        yield return new WaitForSeconds(delay);
         animator.SetBool(clickBool, false);
+    }
+
+    public void ButtonPressed()
+    {
+        audio.clip = pressSound;
+        audio.Play();
+    }
+
+    public void ButtonReleased()
+    {
+        audio.clip = releaseSound;
+        audio.Play();
     }
 }

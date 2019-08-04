@@ -14,6 +14,8 @@ ModelImporter:
     100016: Cube_004
     100018: TV_Screens
     100020: TVs
+    100022: TVs_left
+    100024: TVs_right
     400000: Cube
     400002: Cube_001
     400004: Cube_002
@@ -25,6 +27,8 @@ ModelImporter:
     400016: Cube_004
     400018: TV_Screens
     400020: TVs
+    400022: TVs_left
+    400024: TVs_right
     2100000: unnamed
     2100002: TV
     2100004: TV_Screen
@@ -40,6 +44,8 @@ ModelImporter:
     2300014: Cube_004
     2300016: TV_Screens
     2300018: TVs
+    2300020: TVs_left
+    2300022: TVs_right
     3300000: Cube
     3300002: Cube_001
     3300004: Cube_002
@@ -50,6 +56,8 @@ ModelImporter:
     3300014: Cube_004
     3300016: TV_Screens
     3300018: TVs
+    3300020: TVs_left
+    3300022: TVs_right
     4300000: Cube_002
     4300002: Cube_001
     4300004: Cube
@@ -60,6 +68,8 @@ ModelImporter:
     4300014: Cube_004
     4300016: TV_Screens
     4300018: TVs
+    4300020: TVs_right
+    4300022: TVs_left
     7400000: Default Take
     9500000: //RootNode
     2186277476908879412: ImportLogs
