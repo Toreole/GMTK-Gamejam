@@ -557,6 +557,7 @@ Transform:
   - {fileID: 2123621948}
   - {fileID: 1360177963}
   - {fileID: 164727924}
+  - {fileID: 568039283}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -794,6 +795,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &568039282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 568039283}
+  - component: {fileID: 568039284}
+  m_Layer: 0
+  m_Name: No Button TextManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &568039283
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568039282}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 274082771}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &568039284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568039282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf84e0056135a34abcf3cc62b0d0068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texts:
+  - 
+  - Can you actually read this?
+  - Then come back to the front, please.
+  - You would do both of us a favour.
+  - Don't you like it simple and easy?
+  - Well pressing buttons is still simple and easy.
+  textMesh: {fileID: 711938405}
+  onTextComplete:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  canSkipIfReplay: 0
+  skipText: Ah it's you again.
 --- !u!1 &630228364
 GameObject:
   m_ObjectHideFlags: 0
@@ -2787,7 +2846,7 @@ PrefabInstance:
         type: 3}
       propertyPath: targetActivate
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 568039284}
     - target: {fileID: 3766771126706974815, guid: e5f19cf1cd4aa864492ecac1a786afb3,
         type: 3}
       propertyPath: m_StaticEditorFlags
