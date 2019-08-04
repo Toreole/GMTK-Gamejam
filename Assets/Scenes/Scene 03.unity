@@ -3109,8 +3109,15 @@ MonoBehaviour:
   - Please do it again.
   - And again.
   - Again.
-  - And one more time please.
-  - Thank you.
+  - Once more.
+  - Do you always do as you're told?
+  - I know you do.
+  - So please press the button again.
+  - And again.
+  - Without questioning anything.
+  - Just keep pressing that one and only button.
+  - Because you can't do anything else.
+  - Over and over again.
   textMesh: {fileID: 711938405}
   onTextComplete:
     m_PersistentCalls:
