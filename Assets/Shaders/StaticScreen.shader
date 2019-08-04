@@ -1,4 +1,4 @@
-﻿Shader "Custom/StaticScreen"
+﻿Shader "Noise/StaticScreen"
 {
     Properties
     {
@@ -43,6 +43,11 @@
           return fixed4(c,c,c,c);
         }
 
+		float rand(float2 co)
+		{
+		  return frac((sin( dot(co.xy , float2(12.345 * _Time.w, 67.890 * _Time.w) )) * 12345.67890+_Time.w));
+		}
+
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
             // Albedo comes from a texture tinted by color
@@ -51,7 +56,11 @@
             float PI  = 3.14159265358979323846264 * 00000.1; // PI
             float SQ2 = 1.41421356237309504880169 * 10000.0; // Square Root of Two
 
-            fixed4 c = noise_func(PHI, PI, SQ2, IN.uv_MainTex, _Time.y);
+            //fixed4 c = noise_func(PHI, PI, SQ2, IN.uv_MainTex, _Time.y);
+			//nr = noise result
+			float nr = rand(IN.uv_MainTex);
+			fixed4 c = fixed4(nr, nr, nr, 1);
+
             o.Albedo = c.rgb;
             o.Emission = c.r * _Emission;
             // Metallic and smoothness come from slider variables

@@ -30,6 +30,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     protected GameObject playerInteract;
 
+    [SerializeField, Header("Non XR only:")]
+    protected float stepLength = 0.5f;
+
     protected bool isXR = false;
     
     protected float currentXRot = 0f;
